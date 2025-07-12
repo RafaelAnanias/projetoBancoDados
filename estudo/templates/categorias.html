@@ -1,0 +1,35 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3>Minhas Categorias</h3>
+        <a href="{{ url_for('listaTarefa') }}" class="btn btn-secondary">Voltar para Tarefas</a>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Adicionar Nova Categoria</h4>
+            <form action="" method="post" class="p-4 rounded border shadow-sm">
+                {{ form.csrf_token }}
+                <div class="mb-3">
+                    {{ form.nome_categoria.label(class="form-label") }}
+                    {{ form.nome_categoria(class="form-control") }}
+                </div>
+                {{ form.btnSubmit(class="btn btn-dark col-12") }}
+            </form>
+        </div>
+
+        <div class="col-md-6">
+            <h4>Categorias Existentes</h4>
+            <ul class="list-group">
+                {% for cat in categorias %}
+                <li class="list-group-item">{{ cat.nome_categoria }}</li>
+                {% else %}
+                <li class="list-group-item">Nenhuma categoria cadastrada.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

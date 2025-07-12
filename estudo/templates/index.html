@@ -1,0 +1,47 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<div class="container">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-danger">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    {% if current_user.is_authenticated %}
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h4>Olá, {{current_user.nome}}!</h4>
+        <div>
+            <span class="me-2">Bem-vindo(a) de volta!</span>
+            <a href="{{url_for('logout')}}" class="btn btn-danger">Sair</a>
+        </div>
+    </div>
+    <a href="{{url_for('listaTarefa')}}" class="btn btn-primary">Ver Minhas Tarefas</a>
+    <a href="{{url_for('categorias')}}" class="btn btn-outline-dark">Gerenciar Categorias</a>
+
+    {% else %}
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form action="" method="post" class="mt-4 p-4 rounded border shadow">
+                <h3>Faça seu login</h3>
+                {{ form.csrf_token }}
+                <div class="mb-3">
+                    {{form.email.label(class="form-label")}}
+                    {{form.email(class="form-control")}}
+                </div>
+                <div class="mb-3">
+                    {{form.senha.label(class="form-label")}}
+                    {{form.senha(class="form-control")}}
+                </div>
+                {{form.btnSubmit(class="btn btn-dark col-12")}}
+                <div class="col-12 mt-3 text-center">
+                    Não tem cadastro? <a href="{{url_for('cadastro')}}">Clique aqui!</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
