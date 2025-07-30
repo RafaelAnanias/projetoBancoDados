@@ -14,12 +14,12 @@ py -3 -m venv .venv
 pip install -r requirements.txt
 
 4. Configurar o banco de dados no XAMPP
-1. Abra o XAMPP e inicie o MySQL.
-2. Acesse o phpMyAdmin.
-3. Crie o banco de dados com o seguinte comando: CREATE DATABASE db_nomeDoSeuBanco;
-5. Importe o arquivo SQL enviado com este projeto para popular o banco.
--
-5. Configurar o arquivo .env
+5. Abra o XAMPP e inicie o MySQL.
+6. Acesse o phpMyAdmin.
+7. Crie o banco de dados com o seguinte comando: CREATE DATABASE db_nomeDoSeuBanco;
+8. Importe o arquivo SQL enviado com este projeto para popular o banco.
+
+9. Configurar o arquivo .env
 Crie um arquivo .env na raiz do projeto com o seguinte conteúdo:
 
 DATABASE_URI = 'mysql://root:@localhost/db_nomeDoSeuBanco'
@@ -27,5 +27,5 @@ SECRET_KEY = 'SuaSenhaSecreta'
 
 Substitua SuaSenhaSecreta por uma chave segura de sua escolha.
 
-6. Executar o projeto
+10. Executar o projeto
 flask --app main.py run --debug
