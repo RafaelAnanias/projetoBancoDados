@@ -1,14 +1,31 @@
- ## Para rodar o projeto é necessário seguir alguns passos:
+## Como rodar o projeto
 
-Faça o clone do repositório, após isso insira esses comandos no terminal:
+Siga os passos abaixo para configurar e executar o projeto corretamente.
+1. Clonar o repositório
 
-1. python -m venv venv --> Para criar um ambiente virtual
+git clone https://github.com/RafaelAnanias/projetoBancoDados.git
+cd projetoBancoDados
 
-2. .venv\Scripts\activate --> Para ativar o ambiente virtual
+2. Criar e ativar o ambiente virtual
+py -3 -m venv .venv
+.venv\Scripts\activate
 
-3. pip install -r requirements.txt --> Para instalar as dependências do projeto
+3. Instalar as dependências
+pip install -r requirements.txt
 
-4. flask --app main.py  run --debug --> Para rodar o projeto
+4. Configurar o banco de dados no XAMPP
+1. Abra o XAMPP e inicie o MySQL.
+2. Acesse o phpMyAdmin.
+3. Crie o banco de dados com o seguinte comando: CREATE DATABASE db_nomeDoSeuBanco;
+5. Importe o arquivo SQL enviado com este projeto para popular o banco.
+-
+5. Configurar o arquivo .env
+Crie um arquivo .env na raiz do projeto com o seguinte conteúdo:
 
-5. Após todos os passos é necessário configurar o arquivo .env com o caminho do banco.
+DATABASE_URI = 'mysql://root:@localhost/db_nomeDoSeuBanco'
+SECRET_KEY = 'SuaSenhaSecreta'
 
+Substitua SuaSenhaSecreta por uma chave segura de sua escolha.
+
+6. Executar o projeto
+flask --app main.py run --debug
